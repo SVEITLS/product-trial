@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Product-trial.BLL\Product-trial.BLL.csproj" />
     <ProjectReference Include="..\Product-trial.DAL\Product-trial.DAL.csproj" />
   </ItemGroup>
