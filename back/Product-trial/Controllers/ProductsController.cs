@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Product_trial.BLL.Exceptions;
 using Product_trial.BLL.Services;
@@ -26,6 +27,7 @@ namespace Product_trial.Controllers
         /// <returns>The created product with location header.</returns>
         /// <response code="201">Returns the newly created product.</response>
         /// <response code="500">If an error occurred while creating the product.</response>
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromBody] Product product)
         {
@@ -97,6 +99,7 @@ namespace Product_trial.Controllers
         /// <response code="200">If the product was successfully updated.</response>
         /// <response code="404">If the product was not found.</response>
         /// <response code="500">If an error occurred while updating the product.</response>
+        [Authorize(Policy = "Admin")]
         [HttpPatch("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] Product patchedProduct)
         {
@@ -125,6 +128,7 @@ namespace Product_trial.Controllers
         /// <response code="200">If the product was successfully deleted.</response>
         /// <response code="404">If the product was not found.</response>
         /// <response code="500">If an error occurred while deleting the product.</response>
+        [Authorize(Policy = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

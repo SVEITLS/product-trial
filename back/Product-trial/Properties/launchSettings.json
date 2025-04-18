@@ -27,7 +27,11 @@
       "applicationUrl": "https://localhost:7059;http://localhost:5148",
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development",
-            "SQL_PATH": "Data Source=prod.db"
+            "SQL_PATH": "Data Source=prod.db",
+            "Auth__JwtIssuer": "ALTEN Product trial",
+            "Auth__JwtSecret": "", //should never be commited
+            "Auth__JwtExpiration": "30",
+            "Auth__AdminEmail": "admin@admin.com"
         }
     },
     "IIS Express": {
