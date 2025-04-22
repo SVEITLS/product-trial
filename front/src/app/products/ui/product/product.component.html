@@ -1,0 +1,20 @@
+<div class="flex flex-column md:flex-row gap-2">
+    <div class="relative">
+        <p-image class="border-round w-full"
+            [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product().image"
+            [alt]="product().name" />
+        <p-tag [value]="product().inventoryStatus" [severity]="getSeverity(product())" class="absolute"
+            [style.left.px]="8" [style.top.px]="8" p />
+    </div>
+    <div class="flex flex-column justify-content-between w-full md:flex-row gap-4">
+        <div class="flex flex-row justify-content-between md:flex-column md:justify-content-start gap-2">
+                <div class="font-bold text-xl">{{product().name}}</div>
+                <p-rating cancel="false" readonly="true" class="align-self-center md:align-self-start" [(ngModel)]="product().rating" />
+        </div>
+        <div class="flex flex-row justify-content-between md:justify-content-start md:flex-column gap-2">
+            <div class="font-bold text-xl align-self-center">{{product().price | currency:'€'}} </div>
+            <p-button [disabled]="product().inventoryStatus==='OUTOFSTOCK'" (click)="onCartClick()" icon="pi pi-cart-arrow-down" i18n-label="productAddToCart" label="Add to cart" class="align-self-center"></p-button>
+        </div>
+    </div>
+   
+</div>
