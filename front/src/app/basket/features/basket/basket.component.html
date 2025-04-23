@@ -1,0 +1,31 @@
+
+@if(basketService.basket().length === 0)
+{
+    <h3 class="align-self-center" i18n="EmptyBasketMessage">Your basket is currently empty</h3>
+}
+@else 
+{
+    <div class="flex flex-column gap-2"  style="width: 40vh;">
+        <p-fieldset legend="My basket" i18n-legend="BasketTitle">
+            @for( product of basketService.basket(); track product.id)
+            {
+                <basket-product [product]="product" (remove)="onRemove(product)"></basket-product>
+                @if(!$last)
+                {
+                <p-divider/>
+                }
+            }
+        </p-fieldset>
+        <p-panel>
+            <div class="flex flex-row justify-content-between align-items-center">
+                <h2 class="font-bold" i18n="BasketTotalValueLabel">Total</h2>
+                <p>{{basketService.basketTotal() | currency:'€'}}</p>
+            </div>
+        </p-panel>
+       
+    </div>
+}
+
+
+
+

@@ -7,7 +7,7 @@ import { CardModule } from "primeng/card";
 import { DataViewModule } from 'primeng/dataview';
 import { DialogModule } from 'primeng/dialog';
 import { ProductComponent } from "../../ui/product/product.component";
-import { BasketService } from "app/products/data-access/basket.service";
+import { BasketService } from "app/basket/data-access/basket.service";
 
 const emptyProduct: Product = {
   id: 0,

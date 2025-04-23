@@ -5,10 +5,9 @@
     <div class="p-toolbar-group-center">
         {{ title }}
     </div>
-    <div class="p-toolbar-group-end">
-        <i class="pi pi-shopping-cart" style="font-size: 2rem" pBadge [value]="basketService.basketItemsCount()"></i>
-    </div>
+    <p-button class="p-toolbar-group-end"  icon="pi pi-shopping-cart"  (onClick)="basket.toggle($event)" [badge]="basketService.basketItemsCount().toString()"/>
 </p-toolbar>
+
 <p-splitter 
     [panelSizes]="[20, 80]" 
     [style]="{ height: 'calc(100vh - 100px)' }">
@@ -23,3 +22,6 @@
         </div>
     </ng-template>
 </p-splitter>
+<p-overlayPanel #basket>
+        <basket></basket>
+</p-overlayPanel>

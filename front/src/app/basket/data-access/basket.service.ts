@@ -1,5 +1,5 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { Product } from './product.model';
+import { Product } from '../../products/data-access/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +8,11 @@ export class BasketService {
 
   constructor() { }
 
-  private readonly basket = signal<Product[]>([]);
+  public readonly basket = signal<Product[]>([]);
   public basketItemsCount = computed(() => this.basket().reduce((total, product) => total + product.quantity, 0));
-
+  public basketTotal = computed(() =>
+    this.basket().reduce((total, product) => total + (product.price * product.quantity), 0)
+  );
   /**
  * Adds a product to the basket.
  * If the product is already in the basket, increments its quantity by 1.
@@ -19,7 +21,7 @@ export class BasketService {
   public add(product : Product)
   {
     let basket = this.basket();
-    const productIndex = basket.findIndex(product => product.id === product.id);
+    const productIndex = basket.findIndex(pro => pro.id === product.id);
     //product is not in basket yet
     if(productIndex === -1)
     {
@@ -32,6 +34,20 @@ export class BasketService {
       productToBuyMore.quantity++;
       this.basket.set([...basket])
     }
+  }
+
+  public remove(product : Product)
+  {
+    let basket = this.basket();
+    const productIndex = basket.findIndex(pro => pro.id === product.id);
+
+    if (productIndex === -1) {
+      return;
+    }
+
+    let updatedBasket = [...basket];
+    updatedBasket.splice(productIndex, 1);
+    this.basket.set(updatedBasket);  
   }
 
 }

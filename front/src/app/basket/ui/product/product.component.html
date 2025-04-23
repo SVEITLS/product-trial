@@ -1,0 +1,18 @@
+<div class="grid">
+    <div class="col-6 flex justify-content-start align-items-center">
+        <p-chip>
+            <span class="font-bold text-xl">
+                {{product().name}}
+            </span>
+        </p-chip>
+    </div>
+    <div class="col-6 flex justify-content-end align-items-center">
+        <p class="text-lg font-semibold">{{this.product().quantity*this.product().price |  currency:'€'}}</p>
+   </div>
+   <div class="col-6 flex justify-content-start align-items-center">
+        <p class="text-lg font-semibold" i18n="BasketProductQuantity">Quantity : {{product().quantity}}</p>
+    </div>
+    <div class="col-6 flex justify-content-end align-items-center">
+        <p-button (click)="onRemoveClick()" icon="pi pi-trash" [rounded]="true" [text]="true" [raised]="true" severity="danger" />
+    </div>
+</div>
