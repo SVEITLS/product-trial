@@ -7,6 +7,7 @@ import { CardModule } from "primeng/card";
 import { DataViewModule } from 'primeng/dataview';
 import { DialogModule } from 'primeng/dialog';
 import { ProductComponent } from "../../ui/product/product.component";
+import { BasketService } from "app/products/data-access/basket.service";
 
 const emptyProduct: Product = {
   id: 0,
@@ -34,6 +35,7 @@ const emptyProduct: Product = {
 })
 export class ProductListComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
+  private readonly basketService = inject(BasketService);
 
   public readonly products = this.productsService.products;
 
@@ -76,5 +78,10 @@ export class ProductListComponent implements OnInit {
 
   private closeDialog() {
     this.isDialogVisible = false;
+  }
+
+  public onCartClick(product : Product)
+  {
+    this.basketService.add(product);
   }
 }

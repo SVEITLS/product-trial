@@ -6,7 +6,7 @@
         {{ title }}
     </div>
     <div class="p-toolbar-group-end">
-        <i class="pi pi-shopping-cart" style="font-size: 2rem"></i>
+        <i class="pi pi-shopping-cart" style="font-size: 2rem" pBadge [value]="basketService.basketItemsCount()"></i>
     </div>
 </p-toolbar>
 <p-splitter 
