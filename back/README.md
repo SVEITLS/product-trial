@@ -19,7 +19,7 @@ Then in the project folder, run the migrations using the following command :
 dotnet ef database update -p .\Product-trial.DAL -s .\Product-trial
 ```
 
-### 📦 2. Apply EF Core Migration
+### 📦 2. Configure the app
 
 Create a JWT Security key.
 
